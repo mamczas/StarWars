@@ -1,3 +1,7 @@
+<p>
+  Score : {{score}}
+</p>
+
 <div *ngIf="type === 'people'">
   <mat-grid-list cols="3">
     <mat-grid-tile *ngIf="my$ | async as myPeople; else loading">
