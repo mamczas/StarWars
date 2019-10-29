@@ -1,0 +1,23 @@
+<mat-card class="starsShip-card">
+  <mat-card-header>
+    <mat-card-title>{{ starsShip.name }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>Cargo capacity: {{ starsShip.cargoCapacity }}</p>
+    <p>Consumables: {{ starsShip.consumables }}</p>
+    <p>Cost: {{ starsShip.costInCredits }} credits</p>
+    <p>Crew: {{ starsShip.crew }}</p>
+    <p>Hyperdrive Rating: {{ starsShip.hyperdriveRating }} cm</p>
+    <p>Length: {{ starsShip.length }}</p>
+    <p>Manufacturer: {{ starsShip.manufacturer }}</p>
+    <p>Max Atmosphering speed: {{ starsShip.max_atmosphering_speed }}</p>
+    <p>Model: {{ starsShip.model }}</p>
+    <p>Passengers: {{ starsShip.passengers }}</p>
+    <p>Starship class: {{ starsShip.starship_class }}</p>
+  </mat-card-content>
+  <mat-card-actions *ngIf="!readOnly">
+    <button mat-raised-button (click)="goToplay(starsShip.id)" color="primary">Play</button>
+    <button mat-raised-button (click)="edit(starsShip.id)" color="accent">Edit</button>
+    <button mat-raised-button (click)="delete(starsShip.id)" color="warn">Delete</button>
+  </mat-card-actions>
+</mat-card>

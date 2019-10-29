@@ -1,0 +1,19 @@
+<mat-card class="people-card">
+  <mat-card-header>
+    <mat-card-title>{{ people.name }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>Birth Year: {{ people.birthYear }}</p>
+    <p>Eye color: {{ people.eyeColor }}</p>
+    <p>Gender: {{ people.gender }}</p>
+    <p>Hair color: {{ people.hairColor }}</p>
+    <p>Height: {{ people.height }} cm</p>
+    <p>Mass: {{ people.mass }} kg</p>
+    <p>Skin color: {{ people.skinColor }}</p>
+  </mat-card-content>
+  <mat-card-actions *ngIf="!readOnly">
+    <button mat-raised-button (click)="goToplay(people.id)" color="primary">Play</button>
+    <button mat-raised-button (click)="edit(people.id)" color="accent">Edit</button>
+    <button mat-raised-button (click)="delete(people.id)" color="warn">Delete</button>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,35 @@
+
+<mat-form-field>
+    <mat-label>Choose type</mat-label>
+    <mat-select [(ngModel)] = "selectedValue" (ngModelChange)="onSelection()">
+      <mat-option [value]="'people'">
+        People
+      </mat-option>
+      <mat-option [value]="'starsShip'">
+          Stars Ship
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+<mat-grid-list cols="3" *ngIf="selectedValue === 'people'">
+        <mat-grid-tile *ngFor="let item of (page$ | async)?.pageCollection">
+            <app-card-people [people]="item" [readOnly]="false"></app-card-people>
+        </mat-grid-tile>
+</mat-grid-list>
+
+<mat-grid-list cols="3" rowHeight="600px" *ngIf="selectedValue === 'starsShip'" >
+    <mat-grid-tile *ngFor="let item of (page$ | async)?.pageCollection">
+        <app-card-ship [starsShip]="item" [readOnly]="false"></app-card-ship>
+    </mat-grid-tile>
+</mat-grid-list>
+
+
+
+
+<button mat-button *ngIf="(page$ | async)?.maxPage > PageIndex && !!selectedValue" (click)="nextPage()">
+  Next Page
+</button>
+<button mat-button *ngIf="PageIndex > 1 && !!selectedValue" (click)="previosPage()">
+  Previos Page
+</button>

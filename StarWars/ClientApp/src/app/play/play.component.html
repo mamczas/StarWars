@@ -1,0 +1,42 @@
+<div *ngIf="type === 'people'">
+  <mat-grid-list cols="3">
+    <mat-grid-tile *ngIf="my$ | async as myPeople; else loading">
+      <app-card-people [people]="myPeople" [readOnly]="true"></app-card-people>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <img height="100" width="100" src="assets/vs.jpg" alt="vs" />
+    </mat-grid-tile>
+    <mat-grid-tile *ngIf="random$ | async as randomPeople; else loading">
+      <app-card-people
+        [people]="randomPeople"
+        [readOnly]="true"
+      ></app-card-people>
+    </mat-grid-tile>
+    <ng-template #loading>
+      Loading stuff...
+    </ng-template>
+  </mat-grid-list>
+</div>
+
+<div *ngIf="type === 'starsShip'">
+  <mat-grid-list cols="3" rowHeight="600px">
+    <mat-grid-tile *ngIf="my$ | async as myShip; else loading">
+      <app-card-ship [starsShip]="myShip" [readOnly]="true"></app-card-ship>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <img height="100" width="100" src="assets/vs.jpg" alt="vs" />
+    </mat-grid-tile>
+    <mat-grid-tile *ngIf="random$ | async as randomShip; else loading">
+      <app-card-ship [starsShip]="randomShip"
+        [readOnly]="true"
+      ></app-card-ship>
+    </mat-grid-tile>
+    <ng-template #loading>
+      Loading stuff...
+    </ng-template>
+  </mat-grid-list>
+</div>
+
+<button mat-button (click)="playAgain()">Play Again</button>
